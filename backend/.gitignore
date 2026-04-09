@@ -1,0 +1,10 @@
+node_modules/
+dist/
+
+# Environment files (NEVER commit)
+.env
+.env.*
+!.env.example
+
+*.log
+.DS_Store
