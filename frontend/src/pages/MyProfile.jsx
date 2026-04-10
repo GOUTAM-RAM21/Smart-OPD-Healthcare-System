@@ -348,7 +348,12 @@ const TABS = [
 export default function MyProfile() {
   const navigate  = useNavigate()
   const location  = useLocation()
-  const { token } = useAppContext()
+  const { token, logout } = useAppContext()
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+  }
 
   const [tab, setTab] = useState(location.hash === '#records' ? 'records' : 'profile')
 
@@ -364,7 +369,13 @@ export default function MyProfile() {
 
   return (
     <div className="py-8 page-enter">
-      <h1 style={{ fontSize: 22, fontWeight: 700, color: '#0F172A', marginBottom: 20 }}>My Dashboard</h1>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+        <h1 style={{ fontSize: 22, fontWeight: 700, color: '#0F172A' }}>My Dashboard</h1>
+        <button onClick={handleLogout}
+          style={{ background: '#FEF2F2', color: '#EF4444', border: '1px solid #FECACA', borderRadius: 10, padding: '8px 18px', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>
+          🚪 Logout
+        </button>
+      </div>
 
       {/* Tab bar */}
       <div style={{ display: 'flex', borderBottom: '1px solid #E2E8F0', marginBottom: 24, gap: 4 }}>

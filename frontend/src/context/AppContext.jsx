@@ -40,12 +40,19 @@ export const AppContextProvider = ({ children }) => {
     else setUserData(null)
   }, [token])
 
+  const logout = () => {
+    setToken('')
+    setUserData(null)
+    localStorage.removeItem('token')
+  }
+
   return (
     <AppContext.Provider value={{
       doctors, getDoctorsData,
       token, setToken,
       userData, setUserData,
       loadUserProfileData,
+      logout,
       backendUrl, currencySymbol,
     }}>
       {children}
